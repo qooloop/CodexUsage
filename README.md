@@ -1,4 +1,4 @@
-# Codex Usage Monitor · Codex 用量监控
+# Codex Usage Monitor · Codex 使用量监控
 
 一款 Windows 常驻任务栏托盘的监测工具，让你随时查看 Codex 剩余额度、重置时间和本地 Token 用量。
 
