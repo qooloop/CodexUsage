@@ -6,7 +6,7 @@
 
 > 本项目为第三方工具，与 OpenAI 无隶属关系。
 
-![Codex 用量监控总览](docs/preview/dashboard-overview.png)
+![Codex 用量监控总览](preview/整体预览图.png)
 
 *界面截图使用预览数据，不代表真实账号额度。*
 
