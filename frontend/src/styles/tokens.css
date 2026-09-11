@@ -1,0 +1,77 @@
+/* src/styles/tokens.css
+ * 设计 token —— 与《需求开发文档》第 16 节 + 设计图配色对齐
+ * 命名保持需求文档原样，避免后期改起来到处找
+ */
+
+:root {
+  /* ===== 背景 ===== */
+  --bg-main: #0B111B;
+  --bg-card: rgba(16, 26, 40, 0.88);
+  --bg-card-solid: #101A28;
+  --bg-hover: rgba(26, 39, 57, 0.9);
+  --bg-elevated: rgba(22, 34, 52, 0.95);
+  --bg-sidebar: rgba(16, 25, 40, 0.32);
+
+  /* ===== 文字 ===== */
+  --text-primary: #F5F7FA;
+  --text-secondary: #9CAEC3;
+  --text-tertiary: #6B7C92;
+  --text-disabled: #596A7D;
+
+  /* ===== 强调色（需求文档的 --accent）=====
+   * 状态：剩余 ≥50% 绿 / 20-49% 黄 / <20% 红
+   */
+  --accent: #35E6A5;          /* 健康绿（品牌色） */
+  --accent-dim: #1FA37A;      /* 暗绿（hover/底色） */
+  --accent-blue: #46BDF4;     /* 蓝（Token 进度条） */
+  --accent-blue-dim: #1A6FA0;
+  --warning: #F6C453;         /* 黄 */
+  --warning-dim: #C2933A;
+  --danger: #FF6174;          /* 红 */
+  --danger-dim: #B84556;
+
+  /* ===== 边框 / 分隔 ===== */
+  --border: rgba(156, 174, 195, 0.16);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --divider: rgba(156, 174, 195, 0.08);
+
+  /* ===== 阴影 ===== */
+  --shadow-card: 0 16px 50px rgba(0, 0, 0, 0.30), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-pop:  0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* ===== 圆角（需求文档第 17 节）===== */
+  --radius-main: 14px;
+  --radius-card: 12px;
+  --radius-btn:  8px;
+  --radius-popup: 14px;
+  --radius-progress: 99px;
+
+  /* ===== 字号 ===== */
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-15: 15px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-28: 28px;
+  --fs-32: 32px;
+  --fs-36: 36px;
+
+  /* ===== 动效（需求文档第 19 节）===== */
+  --t-fast: 120ms;
+  --t-base: 200ms;
+  --t-slow: 300ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ===== 间距 ===== */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+}

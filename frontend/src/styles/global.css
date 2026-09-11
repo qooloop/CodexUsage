@@ -1,0 +1,97 @@
+/* src/styles/global.css
+ * 全局重置 + 基础排版
+ * 设计图主背景是深蓝径向渐变（带蓝色光晕），这里用 fixed 全屏背景层
+ */
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
+    "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--fs-14);
+  color: var(--text-primary);
+  background: var(--bg-main);
+  overflow: hidden;
+  user-select: none;
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* 整体外层：深蓝渐变 + 蓝色光晕（设计图同款） */
+.app-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    /* 大块径向光晕（设计图右上蓝色光斑） */
+    radial-gradient(ellipse 70% 50% at 75% 25%, rgba(40, 83, 142, 0.16) 0%, rgba(56, 122, 224, 0) 60%),
+    /* 左下蓝色光晕 */
+    radial-gradient(ellipse 60% 55% at 18% 85%, rgba(30, 65, 130, 0.16) 0%, transparent 65%),
+    /* 中下偏左：深紫色光 */
+    radial-gradient(circle 350px at 30% 100%, rgba(50, 40, 110, 0.18) 0%, transparent 70%),
+    /* 底色：深蓝渐变 */
+    linear-gradient(165deg, #0E1A30 0%, #0A1322 50%, #07101E 100%);
+  border: 1px solid rgba(156, 190, 215, .38);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.app-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* 装饰小光斑 */
+    radial-gradient(circle at 12% 22%, rgba(80, 140, 220, 0.10) 0px, transparent 90px),
+    radial-gradient(circle at 88% 70%, rgba(140, 100, 220, 0.08) 0px, transparent 110px),
+    radial-gradient(circle at 55% 50%, rgba(60, 180, 220, 0.05) 0px, transparent 140px);
+  pointer-events: none;
+}
+
+/* 数字等宽（设计图所有数字都对齐） */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* 滚动条（隐藏即可，悬浮卡不需要滚动） */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* 简单文本省略 */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 焦点态：去掉浏览器默认 */
+button:focus,
+a:focus,
+input:focus {
+  outline: none;
+}
+
+/* 公共 transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(4px);
+}
