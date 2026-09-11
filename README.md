@@ -1,6 +1,6 @@
 # Codex Usage Monitor · Codex 用量监控
 
-一款 Windows 常驻托盘工具，让你随时查看 Codex 剩余额度、重置时间和本地 Token 用量。
+一款 Windows 常驻任务栏托盘的监测工具，让你随时查看 Codex 剩余额度、重置时间和本地 Token 用量。
 
 基于 **Go + Wails + Vue 3** 构建，使用 Windows 原生托盘与 WebView2 渲染界面。适合在使用 Codex 时放在通知区，快速了解额度消耗情况。
 
