@@ -24,11 +24,11 @@
 <details>
 <summary>查看悬停卡片、统计与设置截图</summary>
 
-![悬停卡片](docs/preview/dashboard-hover.png)
+![悬停卡片](preview/dashboard-hover.png)
 
-![用量统计](docs/preview/dashboard-stats.png)
+![用量统计](preview/dashboard-stats.png)
 
-![设置](docs/preview/dashboard-settings.png)
+![设置](preview/dashboard-settings.png)
 
 </details>
 
@@ -161,9 +161,7 @@ internal/usage/     本地记录解析、在线额度采集与统计
 internal/config/    配置校验与持久化
 internal/desktop/   原生托盘、窗口、通知与刷新调度
 frontend/           Vue 3、TypeScript、Pinia 与界面资源
-build/              Windows 图标、构建配置与程序产物
-scripts/            构建、预览、截图与回归检查脚本
-docs/               设计图、预览截图与实现核对报告
+preview/               设计图、预览截图与实现核对报告
 ```
 
 ## 当前限制
