@@ -103,58 +103,50 @@ func renderTrayIconPNG(st TrayIconState, size int) []byte {
 		digitCol = colFlash
 	}
 
-	scale := 1
-	switch {
-	case size >= 48:
-		scale = 4
-	case size >= 32:
-		scale = 3
-	case size >= 24:
-		scale = 2
+	// 按可用区域铺满数字，横纵分别对齐整像素，避免小图标只有 5px 高。
+	// 三位数自动收窄；关闭额度条后，数字使用释放出的垂直空间。
+	showBar := getConfig().ShowLongBar
+	padding := max(1, size/16)
+	gap := max(1, size/12)
+	barH := max(2, size/8)
+	textBottom := size - padding
+	if showBar {
+		textBottom -= barH + padding
 	}
-
-	// 数字宽 = 每字 3*scale + 字间 1*scale
-	textW := len(text)*3*scale + (len(text)-1)*scale
-	textH := 5 * scale
+	textH := textBottom - padding
+	glyphW := min(textH*3/5, (size-2*padding-(len(text)-1)*gap)/len(text))
+	textW := len(text)*glyphW + (len(text)-1)*gap
 	x0 := (size - textW) / 2
-	y0 := (size-textH)/2 - scale/2 // 略偏上，给底部进度条让位
-	if y0 < 1 {
-		y0 = 1
-	}
+	y0 := padding
 	cx := x0
 	for _, ch := range text {
 		glyph, ok := digitFont[ch]
 		if !ok {
-			cx += 4 * scale
+			cx += glyphW + gap
 			continue
 		}
 		for row := 0; row < 5; row++ {
 			for col := 0; col < 3; col++ {
 				if glyph[row]&(0b100>>col) != 0 {
-					drawRect(img, cx+col*scale, y0+row*scale, cx+(col+1)*scale, y0+(row+1)*scale, digitCol)
+					drawRect(img,
+						cx+(col*glyphW+1)/3, y0+(row*textH+2)/5,
+						cx+((col+1)*glyphW+1)/3, y0+((row+1)*textH+2)/5, digitCol)
 				}
 			}
 		}
-		cx += 4 * scale
+		cx += glyphW + gap
 	}
 
-	if !getConfig().ShowLongBar {
+	if !showBar {
 		var buf bytes.Buffer
 		_ = png.Encode(&buf, img)
 		return buf.Bytes()
 	}
 	// 底部进度条（7d 剩余）
-	barH := scale + 1
-	if barH < 2 {
-		barH = 2
-	}
-	barY1 := size - 1
+	barY1 := size - padding
 	barY0 := barY1 - barH
-	barX0 := scale
-	barX1 := size - scale
-	if barX1 <= barX0 {
-		barX1 = size
-	}
+	barX0 := padding
+	barX1 := size - padding
 	// 槽底
 	drawRect(img, barX0, barY0, barX1, barY1, colBarBg)
 	fillPct := 0
